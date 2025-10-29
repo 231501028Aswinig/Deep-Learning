@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotton Leaf Disease Detection</title>
+    <style>
+        body {
+            font-family: "Poppins", sans-serif;
+            background: linear-gradient(135deg, #d1f1e9, #f2f8f5);
+            text-align: center;
+            padding: 40px;
+        }
+
+        h1 {
+            color: #2e8b57;
+        }
+
+        form {
+            margin-top: 30px;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            display: inline-block;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="file"] {
+            margin: 10px 0;
+            padding: 10px;
+            border: 2px dashed #2e8b57;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        input[type="submit"] {
+            background-color: #2e8b57;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #1d6b45;
+        }
+
+        .result {
+            margin-top: 30px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .result img {
+            margin-top: 15px;
+            width: 300px;
+            border-radius: 10px;
+            border: 2px solid #2e8b57;
+        }
+
+        footer {
+            margin-top: 50px;
+            color: #777;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🌿 Cotton Leaf Disease Detection 🌿</h1>
+    <p>Upload a cotton leaf image to identify the disease using Deep Learning (DenseNet121 Model)</p>
+
+    <form action="/predict" method="post" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/*" required><br>
+        <input type="submit" value="Predict Disease">
+    </form>
+
+    {% if prediction %}
+    <div class="result">
+        <h2>{{ prediction }}</h2>
+        <p>{{ confidence }}</p>
+        <img src="{{ img_path }}" alt="Uploaded Leaf Image">
+    </div>
+    {% endif %}
+
+    <footer>
+        <p>Developed by Aswini G & Team | Cotton Disease Project</p>
+    </footer>
+
+</body>
+</html>
